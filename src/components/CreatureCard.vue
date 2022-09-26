@@ -1,6 +1,10 @@
 <template>
-  <h5>Name</h5>
-  <p>{{ creature.name }}</p>
+  <hr />
+  <div v-for="[key, value] in keyValuePairs" :key="key">
+    <h5 style="margin-bottom: 0px">{{ key }}</h5>
+    <p style="margin-top: 2px">{{ value }}</p>
+  </div>
+  <hr />
 </template>
 
 <script>
@@ -12,8 +16,10 @@ export default {
       required: true,
     },
   },
-  setup() {
-    return {};
+  setup(props) {
+    const keyValuePairs = Object.entries(props.creature);
+
+    return { keyValuePairs };
   },
 };
 </script>
